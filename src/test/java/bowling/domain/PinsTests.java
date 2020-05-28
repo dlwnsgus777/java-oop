@@ -8,6 +8,7 @@ import java.lang.reflect.Method;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 public class PinsTests {
 
@@ -40,6 +41,5 @@ public class PinsTests {
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
-
     }
 }
