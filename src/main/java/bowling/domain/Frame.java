@@ -1,11 +1,15 @@
 package bowling.domain;
 
 public class Frame {
-    public void calculateScore() {
+    private int turn = 2;
+    private boolean finalFrame = false;
+
+    public void calculateScore(int pinCount) {
         //TODO:
+        turn--;
     }
 
-    public void hasTurn() {
-        //TODO:
+    public boolean hasTurn() {
+        return turn > 1;
     }
 }
