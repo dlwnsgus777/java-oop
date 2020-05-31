@@ -1,16 +1,19 @@
 package bowling.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BowlingGame {
     private List<Frame> frames;
 
     public BowlingGame() {
-        for(int i = 0; i < 10; i++) {
-            frames.add(new Frame());
+        for(int frameNumber = 0; frameNumber < 9; frameNumber++) {
+            frames.add(new Frame(frameNumber));
         }
     }
 
-    public void startGame() {
+    public void startGame(List<Player> players) {
+
     }
+
 }
