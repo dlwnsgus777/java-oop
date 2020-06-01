@@ -8,12 +8,19 @@ public class Pins {
     private int bowlingPins;
 
     public Pins() {
-        this.bowlingPins = MAX_BOWLING_PIN;
+        resetPin();
     }
 
-    public void rollingBall() {
-        int randomNumber = (int)(Math.random() * bowlingPins + 1);
+    public int rollingBall() {
+        int randomNumber = (int)(Math.random() * bowlingPins) + 1;
         hitBowlingPin(randomNumber);
+        System.out.println("볼링핀 " + bowlingPins + " 개 남음");
+        return MAX_BOWLING_PIN - bowlingPins;
+    }
+
+    public void resetPin() {
+        System.out.println("reset call");
+        this.bowlingPins = MAX_BOWLING_PIN;
     }
 
     private void hitBowlingPin(int hitBowlingpinCount) {
