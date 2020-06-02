@@ -1,4 +1,4 @@
 package bowling.domain;
 
-public interface Frame {
+public class FinalFrame {
 }

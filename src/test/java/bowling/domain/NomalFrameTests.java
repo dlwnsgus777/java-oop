@@ -6,14 +6,14 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
-public class FrameTests {
-    private Frame nomalFrame;
-    private Frame finalFrame;
+public class NomalFrameTests {
+    private NomalFrame nomalFrame;
+    private NomalFrame finalNomalFrame;
 
     @Before
     public void setUp() {
-        nomalFrame = new Frame(0);
-        finalFrame = new Frame(9);
+        nomalFrame = new NomalFrame(0);
+        finalNomalFrame = new NomalFrame(9);
     }
 
     @Test
@@ -27,13 +27,13 @@ public class FrameTests {
 
     @Test
     public void 마지막프레임은_턴이_3번투구할수있는가() {
-        finalFrame.calculateScore(0);
-        finalFrame.calculateScore(0);
+        finalNomalFrame.calculateScore(0);
+        finalNomalFrame.calculateScore(0);
 
-        assertThat(finalFrame.hasTurn(), is(true));
+        assertThat(finalNomalFrame.hasTurn(), is(true));
 
-        finalFrame.calculateScore(0);
+        finalNomalFrame.calculateScore(0);
 
-        assertThat(finalFrame.hasTurn(), is(false));
+        assertThat(finalNomalFrame.hasTurn(), is(false));
     }
 }
