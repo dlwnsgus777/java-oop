@@ -30,7 +30,7 @@ public class BowlingGame {
     private void playGame(NomalFrame nomalFrame) {
         while (nomalFrame.hasTurn()) {
             int pinCount = pins.rollingBall();
-            nomalFrame.calculateScore(pinCount);
+            nomalFrame.playBawling(pinCount);
         }
         pins.resetPin();
     }
@@ -40,7 +40,7 @@ public class BowlingGame {
         while(frame.hasNext()) {
             NomalFrame nowNomalFrame = (NomalFrame) frame.next();
             int pinCount = pins.rollingBall();
-            nowNomalFrame.calculateScore(pinCount);
+            nowNomalFrame.playBawling(pinCount);
         }
     }
 }

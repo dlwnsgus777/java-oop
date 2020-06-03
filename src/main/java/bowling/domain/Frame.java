@@ -1,6 +1,8 @@
 package bowling.domain;
 
 public interface Frame {
-    public boolean hasTurn();
-    
+
+    boolean hasTurn();
+
+    void playBawling(int pinCount);
 }

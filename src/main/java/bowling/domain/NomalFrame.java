@@ -1,55 +1,43 @@
 package bowling.domain;
 
-public class NomalFrame {
-    private static final int TOTAL_FRAME = 9;
+public class NomalFrame implements Frame {
     private static final int NOMAL_FRAME = 2;
-    private static final int FINAL_FRAME = 3;
     private static final int TOTAL_PIN = 10;
 
     private int turn;
     private int firstShot;
     private int secondShot;
-    private int finalShot;
-    private String state;
 
-    public NomalFrame(int frameNumber) {
+    public NomalFrame() {
         firstShot = 0;
         secondShot = 0;
-        finalShot = 0;
-        state = "NOMAL";
-        setFrameState(frameNumber);
-    }
-
-    private void setFrameState(int frameNumber) {
-        if (frameNumber == TOTAL_FRAME) {
-            turn = FINAL_FRAME;
-            return;
-        }
         turn = NOMAL_FRAME;
     }
 
-    public void calculateScore(int pinCount) {
-        setShot(pinCount);
-        setTurn(pinCount);
+    @Override
+    public boolean hasTurn() {
+        return turn > 0;
     }
 
-    private void setShot(int pinCount) {
-        if (hasTurn()) {
-            firstShot = pinCount;
+    @Override
+    public void playBawling(int pinCount) {
+        setScore(pinCount);
+        setTurn();
+    }
+
+    private void setScore(int pinCount) {
+        if (!hasTurn()) {
+            secondShot = pinCount;
             return;
         }
-        secondShot = pinCount;
+        firstShot = pinCount;
     }
 
-    private void setTurn(int pinCount) {
-        if (pinCount == TOTAL_PIN) {
+    private void setTurn() {
+        if (firstShot == TOTAL_PIN) {
             turn -= 2;
             return;
         }
         turn--;
-    }
-
-    public boolean hasTurn() {
-        return turn > 0;
     }
 }
