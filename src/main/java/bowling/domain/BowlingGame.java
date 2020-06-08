@@ -7,7 +7,7 @@ import java.util.List;
 public class BowlingGame {
     private static final int TOTAL_FRAME = 10;
 
-    private List<NomalFrame> nomalFrames;
+    private List<Frame> nomalFrames;
     private Pins pins;
 
     public BowlingGame() {
