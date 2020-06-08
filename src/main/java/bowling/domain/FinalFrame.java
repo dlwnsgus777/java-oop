@@ -2,20 +2,14 @@ package bowling.domain;
 
 public class FinalFrame implements Frame {
     private static final int FINAL_FRAME = 3;
-
-    private static final int SECOND_SHOT = 2;
-    private static final int FINAL_SHOT = 1;
+    private static final int SECOND_TURN = 2;
 
     private int turn;
-    private int firstShot;
-    private int secondShot;
-    private int finalShot;
+    private Score score;
 
     public FinalFrame() {
         turn = FINAL_FRAME;
-        firstShot = 0;
-        secondShot = 0;
-        firstShot = 0;
+        score = new Score(turn);
     }
 
     @Override
@@ -30,19 +24,13 @@ public class FinalFrame implements Frame {
     }
 
     private void setScore(int pinCount) {
-        switch (turn) {
-            case SECOND_SHOT:
-                secondShot = pinCount;
-                break;
-            case FINAL_SHOT:
-                finalShot = pinCount;
-                break;
-            default:
-                firstShot = pinCount;
-        }
+        score.setScore(pinCount, turn);
     }
 
     private void setTurn() {
+        if (turn == SECOND_TURN && score.hasFinalTurn()) {
+            turn -= 2;
+        }
         turn--;
     }
 }

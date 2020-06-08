@@ -5,13 +5,11 @@ public class NomalFrame implements Frame {
     private static final int TOTAL_PIN = 10;
 
     private int turn;
-    private int firstShot;
-    private int secondShot;
+    private Score score;
 
     public NomalFrame() {
-        firstShot = 0;
-        secondShot = 0;
         turn = NOMAL_FRAME;
+        score = new Score(turn);
     }
 
     @Override
@@ -22,19 +20,15 @@ public class NomalFrame implements Frame {
     @Override
     public void playBawling(int pinCount) {
         setScore(pinCount);
-        setTurn();
+        setTurn(pinCount);
     }
 
     private void setScore(int pinCount) {
-        if (!hasTurn()) {
-            secondShot = pinCount;
-            return;
-        }
-        firstShot = pinCount;
+        score.setScore(pinCount, turn);
     }
 
-    private void setTurn() {
-        if (firstShot == TOTAL_PIN) {
+    private void setTurn(int pinCount) {
+        if (pinCount == TOTAL_PIN) {
             turn -= 2;
             return;
         }

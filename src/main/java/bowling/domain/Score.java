@@ -2,14 +2,12 @@ package bowling.domain;
 
 public class Score {
     private static final int FINAL_FRAME = 3;
-
     private static final int SECOND_SHOT = 2;
     private static final int FINAL_SHOT = 1;
 
     private int firstShot;
     private int secondShot;
     private int finalShot;
-    private String state;
 
     public Score(int frameState) {
         if (frameState == FINAL_FRAME) {
@@ -32,8 +30,11 @@ public class Score {
         }
     }
 
-    public void calculateFrameScore() {
-
+    public int getTotalScore() {
+        return firstShot + secondShot + firstShot;
     }
 
+    public boolean hasFinalTurn() {
+        return firstShot + secondShot == 10;
+    }
 }
