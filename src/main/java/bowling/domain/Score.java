@@ -2,32 +2,28 @@ package bowling.domain;
 
 public class Score {
     private static final int FINAL_FRAME = 3;
-    private static final int SECOND_SHOT = 2;
-    private static final int FINAL_SHOT = 1;
+
+    private static final int NOMAL_FRAME_FIRST_TURN = 2;
+
+    private static final int FINAL_FRAME_FIRST_TURN = 3;
+    private static final int FINAL_FRAME_SECOND_TURN = 2;
 
     private int firstShot;
     private int secondShot;
     private int finalShot;
 
     public Score(int frameState) {
-        if (frameState == FINAL_FRAME) {
-            finalShot = 0;
-        }
         firstShot = 0;
         secondShot = 0;
+        finalShot = frameState == FINAL_FRAME ? 0 : -1;
     }
 
     public void setScore(int pinCount, int turn) {
-        switch (turn) {
-            case SECOND_SHOT:
-                secondShot = pinCount;
-                break;
-            case FINAL_SHOT:
-                finalShot = pinCount;
-                break;
-            default:
-                firstShot = pinCount;
-        }
+       if (finalShot != -1) {
+           finalFrameSetScroe(pinCount, turn);
+           return;
+       }
+       nomalFrameSetScore(pinCount, turn);
     }
 
     public int getTotalScore() {
@@ -35,6 +31,31 @@ public class Score {
     }
 
     public boolean hasFinalTurn() {
-        return firstShot + secondShot == 10;
+        return firstShot + secondShot >= 10;
+    }
+
+    private void finalFrameSetScroe(int pinCount, int turn) {
+        switch (turn) {
+            case FINAL_FRAME_FIRST_TURN:
+                firstShot = pinCount;
+                break;
+            case FINAL_FRAME_SECOND_TURN:
+                secondShot = pinCount;
+                break;
+            default:
+                finalShot = pinCount;
+                break;
+        }
+    }
+
+    private void nomalFrameSetScore(int pinCount, int turn) {
+        switch (turn) {
+            case NOMAL_FRAME_FIRST_TURN:
+                firstShot = pinCount;
+                break;
+            default:
+                secondShot = pinCount;
+                break;
+        }
     }
 }

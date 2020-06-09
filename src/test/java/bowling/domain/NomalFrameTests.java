@@ -7,7 +7,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 public class NomalFrameTests {
-    private NomalFrame nomalFrame;
+    private Frame nomalFrame;
 
     @Before
     public void setUp() {
@@ -21,5 +21,12 @@ public class NomalFrameTests {
 
         //then
         assertThat(nomalFrame.hasTurn(), is(true));
+    }
+
+    @Test
+    public void 스트라이크시_턴이_줄어드는가() {
+         nomalFrame.playBawling(10);
+
+        assertThat(nomalFrame.hasTurn(), is(false));
     }
 }

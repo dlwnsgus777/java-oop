@@ -28,7 +28,7 @@ public class FinalFrame implements Frame {
     }
 
     private void setTurn() {
-        if (turn == SECOND_TURN && score.hasFinalTurn()) {
+        if (turn == SECOND_TURN && !score.hasFinalTurn()) {
             turn -= 2;
         }
         turn--;
