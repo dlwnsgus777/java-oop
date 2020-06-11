@@ -17,6 +17,10 @@ public class Score {
         secondShot = 0;
     }
 
+    public int[] getShotScore() {
+        int[] shotScore = new int[];
+    }
+
     public void setScore(int pinCount, int turn) {
         switch (turn) {
             case SECOND_SHOT:

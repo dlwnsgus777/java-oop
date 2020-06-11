@@ -13,6 +13,11 @@ public class FinalFrame implements Frame {
     }
 
     @Override
+    public Score getScore() {
+        return score;
+    }
+
+    @Override
     public boolean hasTurn() {
         return turn > 0;
     }
