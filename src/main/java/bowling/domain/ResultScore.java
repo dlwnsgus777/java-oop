@@ -6,10 +6,6 @@ public class ResultScore {
 
 
     public void calculateScore(Frame frame) {
-        int totalScore = frame.getScore();
 
-        if (totalScore == 10) {
-            state = "STRIKE";
-        }
     }
 }

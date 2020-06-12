@@ -18,10 +18,6 @@ public class Score {
         finalShot = frameState == FINAL_FRAME ? 0 : -1;
     }
 
-    public int[] getShotScore() {
-        int[] shotScore = new int[];
-    }
-
     public void setScore(int pinCount, int turn) {
        if (finalShot != -1) {
            finalFrameSetScroe(pinCount, turn);
