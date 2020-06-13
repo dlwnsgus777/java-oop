@@ -19,7 +19,8 @@ public class Score {
     }
 
     public int[] getShotScore() {
-        int[] shotScore = new int[];
+        int[] shotScore = {firstShot, secondShot, finalShot};
+        return shotScore;
     }
 
     public void setScore(int pinCount, int turn) {
