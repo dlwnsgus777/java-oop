@@ -22,7 +22,6 @@ public class Score {
         int[] shotScore = {firstShot, secondShot, finalShot};
         return shotScore;
     }
-
     public void setScore(int pinCount, int turn) {
        if (finalShot != -1) {
            finalFrameSetScroe(pinCount, turn);
