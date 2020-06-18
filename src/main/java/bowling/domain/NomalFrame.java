@@ -18,6 +18,11 @@ public class NomalFrame implements Frame {
     }
 
     @Override
+    public int getTotalScore() {
+        return score.getTotalScore();
+    }
+
+    @Override
     public boolean hasTurn() {
         return turn > 0;
     }
@@ -29,6 +34,7 @@ public class NomalFrame implements Frame {
     }
 
     private void setScore(int pinCount) {
+        System.out.println(pinCount + " 획득");
         score.setScore(pinCount, turn);
     }
 

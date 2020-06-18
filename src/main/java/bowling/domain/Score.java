@@ -31,6 +31,9 @@ public class Score {
     }
 
     public int getTotalScore() {
+        if (finalShot == -1) {
+            return firstShot + secondShot;
+        }
         return firstShot + secondShot + firstShot;
     }
 

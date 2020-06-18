@@ -20,10 +20,13 @@ public class ResultScore {
         int[] shots = frame.getScore();
 
         setState(shots);
-        totalScore = Arrays.stream(shots).sum();
+        totalScore += frame.getTotalScore();
+        System.out.println(state + " == "+  totalScore);
     }
 
     private void setState(int[] shots) {
+        state = "NOMAL";
+
         if (shots[FIRST_TURN_GET_SCORE] == 10) {
             state = "STRIKE";
         }
@@ -36,6 +39,26 @@ public class ResultScore {
             state = "GUTTER";
         }
 
-        state = "NOMAL";
+    }
+
+    public boolean needNextFrame() {
+        if(state.equals("STRIKE") || state.equals("SPAIRE")) {
+            return true;
+        }
+        return false;
+    }
+
+    public void calculateScoreWithNextFrame(Frame nextFrame) {
+        int[] shots = nextFrame.getScore();
+
+        if (state.equals("STRIKE")) {
+            totalScore += shots[FIRST_TURN_GET_SCORE] + shots[SECOND_TURN_GET_SCORE];
+        }
+
+        if (state.equals("SPAIRE")) {
+            totalScore += shots[FIRST_TURN_GET_SCORE];
+        }
+
+        System.out.println("total next " + totalScore);
     }
 }
