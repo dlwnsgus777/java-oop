@@ -6,5 +6,5 @@ public interface Frame {
 
     void playBawling(int pinCount);
 
-    Score getScore();
+    int[] getScore();
 }

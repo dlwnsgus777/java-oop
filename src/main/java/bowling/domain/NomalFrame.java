@@ -13,8 +13,8 @@ public class NomalFrame implements Frame {
     }
 
     @Override
-    public Score getScore() {
-        return score;
+    public int[] getScore() {
+        return score.getShotScore();
     }
 
     @Override
