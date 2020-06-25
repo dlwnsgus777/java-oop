@@ -1,5 +1,7 @@
 package bowling.domain;
 
+import java.util.Arrays;
+
 public class FinalFrame implements Frame {
     private static final int FINAL_FRAME = 3;
     private static final int SECOND_TURN = 2;
@@ -14,6 +16,7 @@ public class FinalFrame implements Frame {
 
     @Override
     public int[] getScore() {
+        System.out.println(Arrays.toString(score.getShotScore()));
         return score.getShotScore();
     }
 
@@ -29,6 +32,7 @@ public class FinalFrame implements Frame {
 
     @Override
     public void playBawling(int pinCount) {
+        System.out.println(pinCount + " 획득");
         setScore(pinCount);
         setTurn();
     }

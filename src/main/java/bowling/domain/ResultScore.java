@@ -29,14 +29,17 @@ public class ResultScore {
 
         if (shots[FIRST_TURN_GET_SCORE] == 10) {
             state = "STRIKE";
+            return;
         }
 
         if (shots[FIRST_TURN_GET_SCORE] + shots[SECOND_TURN_GET_SCORE] == 10) {
             state = "SPAIRE";
+            return;
         }
 
         if(shots[FIRST_TURN_GET_SCORE] + shots[SECOND_TURN_GET_SCORE] == 0) {
             state = "GUTTER";
+            return;
         }
 
     }

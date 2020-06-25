@@ -44,8 +44,8 @@ public class BowlingGame {
     }
 
     private void setFrames() {
-        for (int i = 0; i < 9; i++) {
-            if (i == 8) {
+        for (int i = 0; i < 10; i++) {
+            if (i == 9) {
                 frames.add(new FinalFrame());
                 return;
             }

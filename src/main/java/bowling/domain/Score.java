@@ -34,7 +34,7 @@ public class Score {
         if (finalShot == -1) {
             return firstShot + secondShot;
         }
-        return firstShot + secondShot + firstShot;
+        return firstShot + secondShot + finalShot;
     }
 
     public boolean hasFinalTurn() {
