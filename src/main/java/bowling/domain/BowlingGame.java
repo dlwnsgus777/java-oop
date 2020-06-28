@@ -7,9 +7,11 @@ import java.util.List;
 public class BowlingGame {
     private Player player;
     private List<Frame> frames;
+    private View view;
 
     public BowlingGame(Player player) {
-        player = player;
+        this.player = player;
+        view = new View();
         frames = new ArrayList<>();
         setFrames();
     }
