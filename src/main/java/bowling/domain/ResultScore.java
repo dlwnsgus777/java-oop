@@ -21,7 +21,14 @@ public class ResultScore {
 
         setState(shots);
         totalScore += frame.getTotalScore();
-        System.out.println(state + " == "+  totalScore);
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public int getTotalScore() {
+        return totalScore;
     }
 
     private void setState(int[] shots) {
@@ -61,7 +68,5 @@ public class ResultScore {
         if (state.equals("SPAIRE")) {
             totalScore += shots[FIRST_TURN_GET_SCORE];
         }
-
-        System.out.println("total next " + totalScore);
     }
 }

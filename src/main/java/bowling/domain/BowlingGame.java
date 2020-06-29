@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class BowlingGame {
+
     private Player player;
     private List<Frame> frames;
     private View view;
@@ -29,10 +30,14 @@ public class BowlingGame {
             System.out.println(count + " 프레임 ");
             playGame(frame);
             count++;
+
             if (resultScore.needNextFrame()) {
                 resultScore.calculateScoreWithNextFrame(frame);
+                view.showScore(frame, resultScore);
             }
             resultScore.calculateScore(frame);
+            view.showScore(frame, resultScore);
+
         }
     }
 
@@ -41,6 +46,7 @@ public class BowlingGame {
         while(frame.hasTurn()) {
             int pinCount = pin.rollingBall();
             frame.playBawling(pinCount);
+            view.showGainScore(pinCount);
         }
         pin.resetPin();
     }

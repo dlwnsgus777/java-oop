@@ -34,7 +34,6 @@ public class NomalFrame implements Frame {
     }
 
     private void setScore(int pinCount) {
-        System.out.println(pinCount + " 획득");
         score.setScore(pinCount, turn);
     }
 
