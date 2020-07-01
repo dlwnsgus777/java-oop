@@ -19,6 +19,10 @@ public class Score {
     }
 
     public int[] getShotScore() {
+        if (finalShot == -1) {
+            int[] shotScore = {firstShot, secondShot};
+            return shotScore;
+        }
         int[] shotScore = {firstShot, secondShot, finalShot};
         return shotScore;
     }

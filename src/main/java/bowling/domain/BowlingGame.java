@@ -18,18 +18,11 @@ public class BowlingGame {
     }
 
     public void startGame() {
-//        for(Frame frame: frames) {
-//            ResultScore resultScore = new ResultScore();
-//            playGame(frame, resultScore);
-//        }
         Iterator iterator = frames.iterator();
         ResultScore resultScore = new ResultScore();
-        int count = 1;
         while(iterator.hasNext()) {
             Frame frame = (Frame) iterator.next();
-            System.out.println(count + " 프레임 ");
             playGame(frame);
-            count++;
 
             if (resultScore.needNextFrame()) {
                 resultScore.calculateScoreWithNextFrame(frame);
@@ -52,12 +45,12 @@ public class BowlingGame {
     }
 
     private void setFrames() {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 1; i <= 10; i++) {
             if (i == 9) {
-                frames.add(new FinalFrame());
+                frames.add(new FinalFrame(i));
                 return;
             }
-            frames.add(new NomalFrame());
+            frames.add(new NomalFrame(i));
         }
     }
 }

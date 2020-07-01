@@ -6,8 +6,10 @@ public class NomalFrame implements Frame {
 
     private int turn;
     private Score score;
+    private int frameNumber;
 
-    public NomalFrame() {
+    public NomalFrame(int frameNumber) {
+        this.frameNumber = frameNumber;
         turn = NOMAL_FRAME;
         score = new Score(turn);
     }
@@ -20,6 +22,11 @@ public class NomalFrame implements Frame {
     @Override
     public int getTotalScore() {
         return score.getTotalScore();
+    }
+
+    @Override
+    public int getFrameNumber() {
+        return frameNumber;
     }
 
     @Override

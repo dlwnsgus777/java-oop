@@ -8,8 +8,10 @@ public class FinalFrame implements Frame {
 
     private int turn;
     private Score score;
+    private int frameNumber;
 
-    public FinalFrame() {
+    public FinalFrame(int frameNumber) {
+        this.frameNumber = frameNumber;
         turn = FINAL_FRAME;
         score = new Score(turn);
     }
@@ -22,6 +24,11 @@ public class FinalFrame implements Frame {
     @Override
     public int getTotalScore() {
         return score.getTotalScore();
+    }
+
+    @Override
+    public int getFrameNumber() {
+        return frameNumber;
     }
 
     @Override

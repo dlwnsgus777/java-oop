@@ -9,4 +9,6 @@ public interface Frame {
     int[] getScore();
 
     int getTotalScore();
+
+    int getFrameNumber();
 }
