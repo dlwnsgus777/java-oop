@@ -1,6 +1,7 @@
 package bowling.domain;
 
 public class View {
+    private static final int FINAL_FRAME = 10;
     private String round;
     private String score;
 
@@ -19,14 +20,21 @@ public class View {
         setRound(frameNumber);
         setScore(scores, state);
 
-        System.out.println(round);
-        System.out.println(score);
+        if (frameNumber == FINAL_FRAME) {
+
+            System.out.println(round);
+            System.out.println(score);
+        }
+
 
 //        System.out.print(state + " == " + totalScore);
     }
 
     private void setRound(int frameNumber) {
-        String thisRound = frameNumber + " Frame\t||\t";
+        String thisRound = frameNumber == FINAL_FRAME
+                ? frameNumber + " Frame"
+                : frameNumber + " Frame\t||\t";;
+
         round += thisRound;
         round.trim();
     }
@@ -34,19 +42,19 @@ public class View {
     private void setScore(int[] scores, String state) {
         for(int i = 0; i < scores.length; i++) {
             String convertScore =  convertBowlingScore(scores[i], state);
-            score += "" + convertScore + "  ";
-            //score.trim();
+            score += convertScore;
         }
+        score += "\t";
     }
 
     private String convertBowlingScore(int hitPin, String state) {
         String bowlingSocre = hitPin + "\t";
 
-        if (hitPin == 0) {
-            bowlingSocre = "-";
+        if (state == "GUTTER") {
+            bowlingSocre = " -\t";
             return bowlingSocre;
         }
-
+//
 //        if (state == "STRIKE") {
 //            bowlingSocre = "X";
 //        }

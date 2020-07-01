@@ -18,8 +18,9 @@ public class ResultScore {
 
     public void calculateScore(Frame frame) {
         int[] shots = frame.getScore();
-
-        setState(shots);
+        if (!frame.hasTurn()) {
+            setState(shots);
+        }
         totalScore += frame.getTotalScore();
     }
 

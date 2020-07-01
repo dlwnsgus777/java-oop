@@ -26,19 +26,20 @@ public class BowlingGame {
 
             if (resultScore.needNextFrame()) {
                 resultScore.calculateScoreWithNextFrame(frame);
-                //view.showScore(frame, resultScore);
+//                view.showScore(frame, resultScore);
             }
             resultScore.calculateScore(frame);
             view.showScore(frame, resultScore);
-
         }
     }
 
     private void playGame(Frame frame) {
         Pins pin = new Pins();
+        ResultScore resultScore = new ResultScore();
         while(frame.hasTurn()) {
             int pinCount = pin.rollingBall();
             frame.playBawling(pinCount);
+            resultScore.calculateScore(frame);
         }
         pin.resetPin();
     }
