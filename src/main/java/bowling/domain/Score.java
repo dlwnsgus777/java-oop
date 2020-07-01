@@ -2,6 +2,7 @@ package bowling.domain;
 
 public class Score {
     private static final int FINAL_FRAME = 3;
+    private static final int NOMAL_FRAME = 2;
 
     private static final int NOMAL_FRAME_FIRST_TURN = 2;
 
@@ -11,8 +12,13 @@ public class Score {
     private int firstShot;
     private int secondShot;
     private int finalShot;
+    private int[] shotScores;
 
     public Score(int frameState) {
+        if (frameState == FINAL_FRAME) {
+            shotScores = new int[FINAL_FRAME];
+        }
+        shotScores = new int[NOMAL_FRAME];
         firstShot = 0;
         secondShot = 0;
         finalShot = frameState == FINAL_FRAME ? 0 : -1;
@@ -26,6 +32,7 @@ public class Score {
         int[] shotScore = {firstShot, secondShot, finalShot};
         return shotScore;
     }
+
     public void setScore(int pinCount, int turn) {
        if (finalShot != -1) {
            finalFrameSetScroe(pinCount, turn);

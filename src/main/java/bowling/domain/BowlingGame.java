@@ -18,28 +18,35 @@ public class BowlingGame {
     }
 
     public void startGame() {
-        Iterator iterator = frames.iterator();
         ResultScore resultScore = new ResultScore();
-        while(iterator.hasNext()) {
-            Frame frame = (Frame) iterator.next();
-            playGame(frame);
 
+        for (int i = 0; i < frames.size(); i++) {
+            playGame(frames.get(i));
             if (resultScore.needNextFrame()) {
-                resultScore.calculateScoreWithNextFrame(frame);
-//                view.showScore(frame, resultScore);
+                resultScore.calculateScoreWithNextFrame(frames.get(i));
+                view.showScore(frames.get(i - 1), resultScore);
+                System.out.println("total" + resultScore.getTotalScore()+  " "+ frames.get(i).getFrameNumber()+"frame");
             }
-            resultScore.calculateScore(frame);
-            view.showScore(frame, resultScore);
+            resultScore.calculateScore(frames.get(i));
+            view.showScore(frames.get(i), resultScore);
         }
+//        for (Frame frame: frames) {
+//            playGame(frame);
+//            if (resultScore.needNextFrame()) {
+//                resultScore.calculateScoreWithNextFrame(frame);
+//                view.showScore(frame, resultScore);
+//                System.out.println("total" + resultScore.getTotalScore()+  " "+ frame.getFrameNumber()+"frame");
+//            }
+//            resultScore.calculateScore(frame);
+//            view.showScore(frame, resultScore);
+//        }
     }
 
     private void playGame(Frame frame) {
         Pins pin = new Pins();
-        ResultScore resultScore = new ResultScore();
         while(frame.hasTurn()) {
             int pinCount = pin.rollingBall();
             frame.playBawling(pinCount);
-            resultScore.calculateScore(frame);
         }
         pin.resetPin();
     }

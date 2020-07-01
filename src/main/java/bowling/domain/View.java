@@ -2,6 +2,7 @@ package bowling.domain;
 
 public class View {
     private static final int FINAL_FRAME = 10;
+
     private String round;
     private String score;
 
@@ -18,10 +19,12 @@ public class View {
 
 
         setRound(frameNumber);
+
         setScore(scores, state);
 
-        if (frameNumber == FINAL_FRAME) {
 
+        if (frameNumber == FINAL_FRAME) {
+            System.out.println();
             System.out.println(round);
             System.out.println(score);
         }
