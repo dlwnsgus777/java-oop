@@ -26,7 +26,7 @@ public class BowlingGame {
 
             if (resultScore.needNextFrame()) {
                 resultScore.calculateScoreWithNextFrame(frame);
-                view.showScore(frame, resultScore);
+                //view.showScore(frame, resultScore);
             }
             resultScore.calculateScore(frame);
             view.showScore(frame, resultScore);
@@ -39,14 +39,13 @@ public class BowlingGame {
         while(frame.hasTurn()) {
             int pinCount = pin.rollingBall();
             frame.playBawling(pinCount);
-            view.showGainScore(pinCount);
         }
         pin.resetPin();
     }
 
     private void setFrames() {
         for (int i = 1; i <= 10; i++) {
-            if (i == 9) {
+            if (i == 10) {
                 frames.add(new FinalFrame(i));
                 return;
             }

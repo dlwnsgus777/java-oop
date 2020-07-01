@@ -15,6 +15,7 @@ public class View {
         String state = resultScore.getState();
         int totalScore = resultScore.getTotalScore();
 
+
         setRound(frameNumber);
         setScore(scores, state);
 
@@ -24,40 +25,35 @@ public class View {
 //        System.out.print(state + " == " + totalScore);
     }
 
-    public void showGainScore(int hitPin) {
-
-        System.out.print(hitPin + " || ");
-    }
-
     private void setScore(int[] scores, String state) {
         for(int i = 0; i < scores.length; i++) {
            String convertScore =  convertBowlingScore(scores[i], state);
-           score += "   " + convertScore + "  ";
+           score += "" + convertScore + "  ";
            score.trim();
         }
     }
 
     private void setRound(int frameNumber) {
-        String thisRound = frameNumber + "    Frame   ";
+        String thisRound = frameNumber + " Frame  || ";
         round += thisRound;
         round.trim();
     }
 
     private String convertBowlingScore(int hitPin, String state) {
-        String bowlingSocre = "";
+        String bowlingSocre = " " + hitPin + "";
 
         if (hitPin == 0) {
             bowlingSocre = "-";
             return bowlingSocre;
         }
 
-        if (state == "STRIKE") {
-            bowlingSocre = "X";
-        }
-
-        if (state == "SPAIRE") {
-            bowlingSocre = "/";
-        }
+//        if (state == "STRIKE") {
+//            bowlingSocre = "X";
+//        }
+//
+//        if (state == "SPAIRE") {
+//            bowlingSocre = "/";
+//        }
 
         return bowlingSocre;
     }
