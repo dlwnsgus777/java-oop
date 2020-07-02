@@ -16,12 +16,14 @@ public class Score {
     private static final int FINAL_FRAME_SECOND_TURN = 2;
 
     private int[] shotScores;
+    private ResultScore resultScore;
 
     public Score(int frameState) {
         if (frameState == FINAL_FRAME) {
             shotScores = new int[FINAL_FRAME];
         }
         shotScores = new int[NOMAL_FRAME];
+        resultScore = new ResultScore();
     }
 
     public int[] getShotScore() {
