@@ -1,6 +1,12 @@
 package bowling.domain;
 
+import java.util.Arrays;
+
 public class Score {
+    private static final int FIRST_SHOT = 0;
+    private static final int SECOND_SHOT = 1;
+    private static final int FINAL_SHOT = 2;
+
     private static final int FINAL_FRAME = 3;
     private static final int NOMAL_FRAME = 2;
 
@@ -9,9 +15,6 @@ public class Score {
     private static final int FINAL_FRAME_FIRST_TURN = 3;
     private static final int FINAL_FRAME_SECOND_TURN = 2;
 
-    private int firstShot;
-    private int secondShot;
-    private int finalShot;
     private int[] shotScores;
 
     public Score(int frameState) {
@@ -19,22 +22,14 @@ public class Score {
             shotScores = new int[FINAL_FRAME];
         }
         shotScores = new int[NOMAL_FRAME];
-        firstShot = 0;
-        secondShot = 0;
-        finalShot = frameState == FINAL_FRAME ? 0 : -1;
     }
 
     public int[] getShotScore() {
-        if (finalShot == -1) {
-            int[] shotScore = {firstShot, secondShot};
-            return shotScore;
-        }
-        int[] shotScore = {firstShot, secondShot, finalShot};
-        return shotScore;
+        return shotScores;
     }
 
     public void setScore(int pinCount, int turn) {
-       if (finalShot != -1) {
+       if (shotScores.length == FINAL_FRAME) {
            finalFrameSetScroe(pinCount, turn);
            return;
        }
@@ -42,26 +37,23 @@ public class Score {
     }
 
     public int getTotalScore() {
-        if (finalShot == -1) {
-            return firstShot + secondShot;
-        }
-        return firstShot + secondShot + finalShot;
+        return Arrays.stream(shotScores).sum();
     }
 
     public boolean hasFinalTurn() {
-        return firstShot + secondShot >= 10;
+        return shotScores[FIRST_SHOT] + shotScores[SECOND_SHOT] >= 10;
     }
 
     private void finalFrameSetScroe(int pinCount, int turn) {
         switch (turn) {
             case FINAL_FRAME_FIRST_TURN:
-                firstShot = pinCount;
+                shotScores[FIRST_SHOT] = pinCount;
                 break;
             case FINAL_FRAME_SECOND_TURN:
-                secondShot = pinCount;
+                shotScores[SECOND_SHOT] = pinCount;
                 break;
             default:
-                finalShot = pinCount;
+                shotScores[FINAL_SHOT] = pinCount;
                 break;
         }
     }
@@ -69,10 +61,10 @@ public class Score {
     private void nomalFrameSetScore(int pinCount, int turn) {
         switch (turn) {
             case NOMAL_FRAME_FIRST_TURN:
-                firstShot = pinCount;
+                shotScores[FIRST_SHOT] = pinCount;
                 break;
             default:
-                secondShot = pinCount;
+                shotScores[SECOND_SHOT] = pinCount;
                 break;
         }
     }
