@@ -32,6 +32,11 @@ public class FinalFrame implements Frame {
     }
 
     @Override
+    public String getState() {
+        return score.getState();
+    }
+
+    @Override
     public boolean hasTurn() {
         return turn > 0;
     }

@@ -30,6 +30,11 @@ public class NomalFrame implements Frame {
     }
 
     @Override
+    public String getState() {
+        return score.getState();
+    }
+
+    @Override
     public boolean hasTurn() {
         return turn > 0;
     }
@@ -45,6 +50,7 @@ public class NomalFrame implements Frame {
     }
 
     private void setTurn(int pinCount) {
+        score.calculateState();
         if (pinCount == TOTAL_PIN) {
             turn -= 2;
             return;

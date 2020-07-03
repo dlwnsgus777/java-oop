@@ -11,4 +11,6 @@ public interface Frame {
     int getTotalScore();
 
     int getFrameNumber();
+
+    String getState();
 }

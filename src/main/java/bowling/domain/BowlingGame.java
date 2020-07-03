@@ -1,7 +1,6 @@
 package bowling.domain;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class BowlingGame {
@@ -18,28 +17,10 @@ public class BowlingGame {
     }
 
     public void startGame() {
-        ResultScore resultScore = new ResultScore();
-
-        for (int i = 0; i < frames.size(); i++) {
-            playGame(frames.get(i));
-            if (resultScore.needNextFrame()) {
-                resultScore.calculateScoreWithNextFrame(frames.get(i));
-                view.showScore(frames.get(i - 1), resultScore);
-                System.out.println("total" + resultScore.getTotalScore()+  " "+ frames.get(i).getFrameNumber()+"frame");
-            }
-            resultScore.calculateScore(frames.get(i));
-            view.showScore(frames.get(i), resultScore);
+        for (Frame frame: frames) {
+            playGame(frame);
         }
-//        for (Frame frame: frames) {
-//            playGame(frame);
-//            if (resultScore.needNextFrame()) {
-//                resultScore.calculateScoreWithNextFrame(frame);
-//                view.showScore(frame, resultScore);
-//                System.out.println("total" + resultScore.getTotalScore()+  " "+ frame.getFrameNumber()+"frame");
-//            }
-//            resultScore.calculateScore(frame);
-//            view.showScore(frame, resultScore);
-//        }
+        view.showBowlingGame(frames, player);
     }
 
     private void playGame(Frame frame) {

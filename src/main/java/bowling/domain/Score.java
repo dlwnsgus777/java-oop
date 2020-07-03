@@ -16,14 +16,18 @@ public class Score {
     private static final int FINAL_FRAME_SECOND_TURN = 2;
 
     private int[] shotScores;
-    private ResultScore resultScore;
+    private String state;
 
     public Score(int frameState) {
         if (frameState == FINAL_FRAME) {
             shotScores = new int[FINAL_FRAME];
         }
         shotScores = new int[NOMAL_FRAME];
-        resultScore = new ResultScore();
+        state = "NOMAL";
+    }
+
+    public String getState() {
+        return state;
     }
 
     public int[] getShotScore() {
@@ -68,6 +72,18 @@ public class Score {
             default:
                 shotScores[SECOND_SHOT] = pinCount;
                 break;
+        }
+    }
+
+    public void calculateState() {
+        if (shotScores[FIRST_SHOT] == 10) {
+           state = "STRIKE";
+            return;
+        }
+
+        if (shotScores[FIRST_SHOT] + shotScores[SECOND_SHOT] == 10) {
+            state = "SPAIRE";
+            return;
         }
     }
 }
