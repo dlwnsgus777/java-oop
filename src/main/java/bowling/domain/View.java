@@ -8,17 +8,18 @@ public class View {
 
     private String round;
     private String score;
+    private String totalScore;
     private ResultScore resultScore;
 
     public View() {
         round = "";
         score = "";
+        totalScore = "";
         resultScore = new ResultScore();
     }
 
 
     public void showBowlingGame(List<Frame> frames, Player player) {
-        int totalScore = 0;
         for(int i = 0; i < frames.size(); i++) {
             Frame frame = frames.get(i);
             setRound(frame.getFrameNumber());
@@ -27,8 +28,14 @@ public class View {
                 resultScore.calculateScoreWithNextFrame(frame.getState(), frames.get(i + 1));
             }
 
-            System.out.println(resultScore.getTotalScore() + " == " + frame.getFrameNumber() + " == " + Arrays.toString(frame.getScore()));
+            setScore(frame.getScore(), frame.getState());
+            setTotalScore(resultScore.getTotalScore());
         }
+
+        System.out.println("Player : " + player.getName());
+        System.out.println(round);
+        System.out.println(score);
+        System.out.println(totalScore);
     }
 
     private void setScore(int[] scores, String state) {
@@ -37,6 +44,11 @@ public class View {
             score += convertScore;
         }
         score += "\t";
+    }
+
+    private void setTotalScore(int totalScore) {
+
+        this.totalScore += totalScore + " \t\t\t";
     }
 
     private void setRound(int frameNumber) {
@@ -55,7 +67,6 @@ public class View {
             bowlingSocre = " -\t";
             return bowlingSocre;
         }
-//
 //        if (state == "STRIKE") {
 //            bowlingSocre = "X";
 //        }
