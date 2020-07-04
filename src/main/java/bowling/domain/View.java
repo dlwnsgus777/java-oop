@@ -4,6 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class View {
+    private static final String STRIKE = "X";
+    private static final String SPAIRE = " / ";
+    private static final String GUTTER = " - ";
+
     private static final int FINAL_FRAME = 10;
 
     private String round;
@@ -40,41 +44,32 @@ public class View {
 
     private void setScore(int[] scores, String state) {
         for(int i = 0; i < scores.length; i++) {
-            String convertScore =  convertBowlingScore(scores[i], state);
-            score += convertScore;
+            String convertScore = String.valueOf(scores[i]);
+
+            if (scores[i] == 0) {
+                convertScore = GUTTER;
+            }
+            if (state.equals("STRIKE") && i == 0) {
+                convertScore = STRIKE;
+            }
+
+            if (state.equals("SPAIRE") && i == scores.length - 1) {
+                convertScore = SPAIRE;
+            }
+            score += convertScore + "\t";
         }
-        score += "\t";
+        score += "||\t";
     }
 
     private void setTotalScore(int totalScore) {
 
-        this.totalScore += totalScore + " \t\t\t";
+        this.totalScore += totalScore + "\t\t|| ";
     }
 
     private void setRound(int frameNumber) {
-        String thisRound = frameNumber == FINAL_FRAME
-                ? frameNumber + " Frame"
-                : frameNumber + " Frame\t||\t";;
+        String thisRound =  frameNumber + " Frame\t|| ";;
 
         round += thisRound;
         round.trim();
-    }
-
-    private String convertBowlingScore(int hitPin, String state) {
-        String bowlingSocre = hitPin + "\t";
-
-        if (state == "GUTTER") {
-            bowlingSocre = " -\t";
-            return bowlingSocre;
-        }
-//        if (state == "STRIKE") {
-//            bowlingSocre = "X";
-//        }
-//
-//        if (state == "SPAIRE") {
-//            bowlingSocre = "/";
-//        }
-
-        return bowlingSocre;
     }
 }
