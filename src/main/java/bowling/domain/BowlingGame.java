@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BowlingGame {
+    private static final int FINAL_FRAME = 10;
 
     private Player player;
     private List<Frame> frames;
@@ -33,8 +34,8 @@ public class BowlingGame {
     }
 
     private void setFrames() {
-        for (int i = 1; i <= 10; i++) {
-            if (i == 10) {
+        for (int i = 1; i <= FINAL_FRAME; i++) {
+            if (i == FINAL_FRAME) {
                 frames.add(new FinalFrame(i));
                 return;
             }
